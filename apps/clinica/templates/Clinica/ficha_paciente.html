@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.html' %}
+
+    <body>
+        {% include 'navbar.html' %}
+        {% include 'sidebar.html' %}
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Clientes</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item">Clinica</li>
+                        <li class="breadcrumb-item active">Pacientes</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+            <section class="section">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-12">
+                    </div>
+
+                    <div class="col-lg-10 col-md-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- No Labels Form -->
+                                 <h1>Detalhes do Paciente</h1>
+                                <hr>
+
+                                <form class="row g-3 needs-validation" action="adicionar_paciente/{{editar_ficha_paciente.id}}"
+                                    method="POST"  novalidate>
+                                    {% csrf_token %}
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input"
+                                            type="checkbox" id="gridCheck2" name="inactivo">
+                                        <label class="form-check-label"
+                                            for="gridCheck2">
+                                            Inactivo
+                                        </label>
+                                    </div>
+
+
+                                    <div class="col-md-8 form-floating ">
+                                        <input id=" mb-3" type="text"
+                                            class="form-control"
+                                            placeholder="Nome" name="nome"
+                                            required>
+                                        <label for="floatingInput">Nome</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apelido" name="apelido" required>
+                                            <label for="floatingInput">Apelido</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="date"
+                                            class="form-control"
+                                            placeholder="Nascimento"
+                                            name="data_nascimento" required>
+                                            <label for="floatingInput">Data de Nascimento</label>
+                                    </div>
+
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apelido" name="local_nascimento" required>
+                                            <label for="floatingInput">Local de Nascimento</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <select id="inputState"
+                                            class="form-select" name="sexo" required>
+                                            <option selected>Sexo...</option>
+                                            <option>Masculino</option>
+                                            <option>Femenino</option>
+                                        </select>
+                                        <label for="floatingInput">Sexo</label>
+                                    </div>
+
+                                    <div class="col-md-12 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Morada" name="morada">
+                                            <label for="floatingInput">Morada</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Telefone" name="telefone" required>
+                                            <label for="floatingInput">Telefone</label>
+                                    </div>
+
+                                    <div class="col-md-6 form-floating">
+                                        <input type="email" class="form-control"
+                                            placeholder="Email" name="email">
+                                            <label for="floatingInput">Email</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="NUIT" name="numero_contribuinte">
+                                            <label for="floatingInput">NUIT</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Profissao" name="profissao">
+                                            <label for="floatingInput">Profissao</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <select id="inputState"
+                                            class="form-select" name="tipo_documento">
+                                            <option selected>Documento...</option>
+                                            <option>BI</option>
+                                            <option>Passaporte</option>
+                                            <option>Carta de conducao</option>
+                                            <option>Cartao de eleitor</option>
+                                            <option>DIRE</option>
+                                            <option>Outros</option>
+                                        </select>
+                                        <label for="floatingInput">Documento</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Numero" name="numero_documento">
+                                            <label for="floatingInput">Numero do documento</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="date" class="form-control"
+                                            placeholder="Emissao" name="data_emissao_documento">
+                                            <label for="floatingInput">Emissao</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="date" class="form-control"
+                                            placeholder="Validade" name="data_validade_documento">
+                                            <label for="floatingInput">Validade</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nacionalidade" required>
+                                            <label for="floatingInput">Nacionalidade</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <select id="inputState"
+                                            class="form-select" name="estado_civil">
+                                            <option selected>Estado Civil...</option>
+                                            <option>Solteiro/a</option>
+                                            <option>Casado/a</option>
+                                            <option>Divorciado/a</option>
+                                            <option>Viuvo/a</option>
+                                            <option>Outro</option>
+                                        </select>
+                                        <label for="floatingInput">Estado Civil</label>
+                                    </div>
+
+                                    <div class="col-md-6 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nome_pai">
+                                            <label for="floatingInput">Nome do Pai</label>
+                                    </div>
+
+                                    <div class="col-md-6 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nome_mae">
+                                            <label for="floatingInput">Nome da Mae</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Observecoes" id="floatingTextarea2" style="height: 100px" name="observacoes"></textarea>
+                                        <label for="floatingTextarea2">Observacoes</label>
+                                      </div>
+
+                                    <div class="text-end">
+                                        <button type="reset"
+                                            class="btn btn-secondary float-right">Limpar</button>
+                                        <button type="submit"
+                                            class="btn btn-primary float-right">Gracar</button>
+                                    </div>
+
+                                </form><!-- End No Labels Form -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </main><!-- End #main -->
+
+    </body>
+
+    {% include 'footer.html' %}
+
+</html>

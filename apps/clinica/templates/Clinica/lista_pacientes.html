@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block titulo %}
+    <title>Clientes </title>
+    {% endblock %}
+    {% include 'head.html' %}
+
+    <body>
+        {% include 'navbar.html' %}
+        {% include 'sidebar.html' %}
+
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Lista</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Clinica</a></li>
+                        <li class="breadcrumb-item">Pacientes</li>
+                    </ol>
+                    <a href="{% url 'ficha_paciente' %}">
+                        <button type="button"  class="btn btn-outline-success" onclick="index.html"">Novo Paciente</button>
+                    </a>
+                </nav>
+            </div><!-- End Page Title -->
+
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-body">
+
+                                <!-- Table with stripped rows -->
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th data-type="date"
+                                                data-format="YYYY-MM-DD">
+                                                Nascimento</th>
+                                            <th>Morada</th>
+                                            <!-- <th>Editar</th>
+                                            <th>Apagar</th> -->
+                                        </tr>
+                                    </thead>
+                                   <!-- <h3>{{todos_pacientes}}</h3> -->
+                                    {% for x in todos_pacientes %}
+                                    <tr>
+                                        <td><a href="editar_ficha_paciente/{{x.id}}">{{ x.id }}</a></td>
+                                        <td>{{ x.nome }} {{ x.apelido }}</td>
+                                        <td >{{ x.data_nascimento }}</td>
+                                        <td>{{ x.morada }}</td>
+                                        <td><a href="editar_ficha_paciente/{{x.id}}"><i class="bi bi-pencil"></i></a>|<a href="eliminar_paciente/{{x.id}}"><i class="bi bi-trash3 text-danger"></i></a></i></td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </table>
+                                <!-- End Table with stripped rows -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main><!-- End #main -->
+
+        <!-- Table with stripped rows -->
+
+    </body>
+
+    {% include 'footer.html' %}
+
+</html>

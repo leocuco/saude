@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'head.html' %}
+
+    <body>
+        {% include 'navbar.html' %}
+        {% include 'sidebar.html' %}
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Clientes</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item">Clinica</li>
+                        <li class="breadcrumb-item active">Pacientes</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+            <section class="section">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-12">
+                    </div>
+
+                    <div class="col-lg-10 col-md-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+
+                                <!-- No Labels Form -->
+                                <h1>Detalhes do Paciente</h1>
+                                <hr>
+                                <p>Nascimento: {{editar_ficha_paciente.data_emissao_documento}}</p> 
+
+                                <form class="row g-3 needs-validation" action="guardar_alteracoes/{{.id}}"
+                                    method="POST"  novalidate>
+                                    {% csrf_token %}
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input"
+                                            type="checkbox" id="gridCheck2" name="inactivo" value="{{editar_ficha_paciente.inactivo}}">
+                                        <label class="form-check-label"
+                                            for="gridCheck2">
+                                            Inactivo
+                                        </label>
+                                    </div>
+
+
+                                    <div class="col-md-8 form-floating ">
+                                        <input id=" mb-3" type="text"
+                                            class="form-control"
+                                            placeholder="Nome" name="nome"
+                                            required value="{{editar_ficha_paciente.nome}}">
+                                        <label for="floatingInput">Nome</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apelido" name="apelido" required value="{{editar_ficha_paciente.apelido}}">
+                                            <label for="floatingInput">Apelido</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="date"
+                                            class="form-control"
+                                            placeholder="YYYY-MM-DD"
+                                            name="data_nascimento" required value="{{editar_ficha_paciente.data_nascimento}}">
+                                            <label for="floatingInput">Data de Nascimento</label>
+                                    </div>
+
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apelido" name="local_nascimento" required value="{{editar_ficha_paciente.local_nascimento}}">
+                                            <label for="floatingInput">Local de Nascimento</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                            <select id="inputState" class="form-select" name="sexo">
+                                                <option selected>Sexo...</option>
+                                                <option value="Masculino" {% if editar_ficha_paciente.sexo == 'Masculino' %}selected{% endif %}>Masculino</option>
+                                                <option value="Femenino" {% if editar_ficha_paciente.sexo == 'Femenino' %}selected{% endif %}>Femenino</option>
+                                            </select>
+                                        <label for="floatingInput">Sexo</label>
+                                    </div>
+
+                                    <div class="col-md-12 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Morada" name="morada" value="{{editar_ficha_paciente.morada}}" >
+                                            <label for="floatingInput">Morada</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Telefone" name="telefone" required value="{{editar_ficha_paciente.telefone}}">
+                                            <label for="floatingInput">Telefone</label>
+                                    </div>
+
+                                    <div class="col-md-6 form-floating">
+                                        <input type="email" class="form-control"
+                                            placeholder="Email" name="email" value="{{editar_ficha_paciente.email}}">
+                                            <label for="floatingInput">Email</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="NUIT" name="numero_contribuinte" value="{{editar_ficha_paciente.numero_contribuinte}}">
+                                            <label for="floatingInput">NUIT</label>
+                                    </div>
+
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Profissao" name="profissao" value="{{editar_ficha_paciente.profissao}}">
+                                            <label for="floatingInput">Profissao</label>
+                                    </div>
+                                    <div class="col-md-4 form-floating">
+                                        <select id="inputState" class="form-select" name="tipo_documento">
+                                            <option selected>Documento...</option>
+                                            <option {% if editar_ficha_paciente.documento == 'BI' %}selected{% endif %}>BI</option>
+                                            <option {% if editar_ficha_paciente.documento == 'Passaporte' %}selected{% endif %}>Passaporte</option>
+                                            <option {% if editar_ficha_paciente.documento == 'Carta de conducao' %}selected{% endif %}>Carta de conducao</option>
+                                            <option {% if editar_ficha_paciente.documento == 'Cartao de eleitor' %}selected{% endif %}>Cartao de eleitor</option>
+                                            <option {% if editar_ficha_paciente.documento == 'DIRE' %}selected{% endif %}>DIRE</option>
+                                            <option {% if editar_ficha_paciente.documento == 'Outros' %}selected{% endif %}>Outros</option>
+                                        </select>
+                                        <label for="floatingInput">Documento</label>
+
+                                    </div>
+                                    <div class="col-md-4 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Numero" name="numero_documento" value="{{editar_ficha_paciente.numero_documento}}">
+                                            <label for="floatingInput">Numero do documento</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="date" class="form-control"
+                                            placeholder="YYYY-MM-DD" name="data_emissao_documento" value="{{editar_ficha_paciente.data_emissao_documento}}">
+                                            <label for="floatingInput">Emissao</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="date" class="form-control"
+                                            placeholder="YYYY-MM-DD" name="data_validade_documento" value="{{editar_ficha_paciente.data_validade_documento}}">
+                                            <label for="floatingInput">Validade</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nacionalidade" required value="{{editar_ficha_paciente.nacionalidade}}">
+                                            <label for="floatingInput">Nacionalidade</label>
+                                    </div>
+
+                                    <div class="col-md-3 form-floating">
+                                        <select id="inputState" class="form-select" name="estado_civil">
+                                            <option selected>Estado Civil...</option>
+                                            <option {% if editar_ficha_paciente.estado_civil == 'Solteiro/a' %}selected{% endif %}>Solteiro/a</option>
+                                            <option {% if editar_ficha_paciente.estado_civil == 'Casado/a' %}selected{% endif %}>Casado/a</option>
+                                            <option {% if editar_ficha_paciente.estado_civil == 'Divorciado/a' %}selected{% endif %}>Divorciado/a</option>
+                                            <option {% if editar_ficha_paciente.estado_civil == 'Viuvo/a' %}selected{% endif %}>Viuvo/a</option>
+                                            <option {% if editar_ficha_paciente.estado_civil == 'Outro' %}selected{% endif %}>Outro</option>
+                                        </select>
+                                        <label for="floatingInput">Estado Civil</label>
+                                    </div>
+                                    <div class="col-md-6 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nome_pai" value="{{editar_ficha_paciente.nome_pai}}">
+                                            <label for="floatingInput">Nome do Pai</label>
+                                    </div>
+
+                                    <div class="col-md-6 form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="Emissao" name="nome_mae" value="{{editar_ficha_paciente.nome_mae}}">
+                                            <label for="floatingInput">Nome da Mae</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Observecoes" id="floatingTextarea2" style="height: 100px" name="observacoes" >{{editar_ficha_paciente.observacoes}}</textarea>
+                                        <label for="floatingTextarea2">Observacoes</label>
+                                      </div>
+
+                                    <div class="text-end">
+                                        <button type="reset"
+                                            class="btn btn-secondary float-right">Limpar</button>
+                                        <button type="submit"
+                                            class="btn btn-warning float-right">Actualizar</button>
+                                    </div>
+                                </form><!-- End No Labels Form -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </main><!-- End #main -->
+
+    </body>
+
+    {% include 'footer.html' %}
+
+</html>
