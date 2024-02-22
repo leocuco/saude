@@ -108,7 +108,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-DATA_FORMAT = 'yyyy-mm-dd'
+Data_format = 'yyyy/mm/dd'
 
 USE_I18N = True
 

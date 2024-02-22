@@ -11,6 +11,5 @@ urlpatterns = [
     path("clinica/pacientes/editar_ficha_paciente/<int:paciente_id>/", views.editar_ficha_paciente, name="editar_ficha_paciente"),
     path("clinica/pacientes/editar_ficha_paciente/<int:paciente_id>/guardar_alteracoes/", views.guardar_alteracoes, name="guardar_alteracoes"),
     path("clinica/pacientes/eliminar_paciente/<int:paciente_id>", views.eliminar_paciente, name="eliminar_paciente"),
-    
-    
+    # path("clinica/pacientes/eliminar_paciente/<int:paciente_id>/confirmar_eliminar/", views.confirmar_eliminar, name="confirmar_eliminar"),
 ]

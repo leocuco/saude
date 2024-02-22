@@ -91,3 +91,12 @@ def guardar_alteracoes(request, paciente_id):
 def eliminar_paciente(request, paciente_id):
     paciente.objects.filter(pk=paciente_id).delete()
     return HttpResponseRedirect(reverse('lista_pacientes'))
+
+
+# def confirmar_eliminar(request, paciente_id):
+#     confirmar_eliminar = paciente.objects.get(pk=paciente_id)
+#     template_name = loader.get_template('clinica/confirmar_eliminar.html')
+#     context = {
+#         'confirmar_eliminar': confirmar_eliminar,
+#     }
+#     return HttpResponse(template_name.render(context, request))

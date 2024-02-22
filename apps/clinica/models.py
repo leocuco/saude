@@ -48,7 +48,7 @@ class paciente(models.Model):
     nome_pai = models.CharField(max_length=200, null=True)
     nome_mae = models.CharField(max_length=200, null=True)
     data_criacao = models.DateTimeField('data de criacao',default=timezone.now)
-    utilizador_criacao = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    utilizador_criacao = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='utilizador_criacao')
     ultima_alteracao = models.DateTimeField('ultima alteracao',default=timezone.now)
     inactivo = models.BooleanField(default=False)
     

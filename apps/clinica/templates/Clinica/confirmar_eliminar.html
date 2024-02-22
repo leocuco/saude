@@ -1,0 +1,16 @@
+<!-- FILEPATH: /Users/admin/Dev/saude/apps/clinica/templates/Clinica/confirmar_eliminar.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Eliminação</title>
+</head>
+<body>
+    <h1>Confirmar Eliminação</h1>
+    <p>Tem certeza que deseja eliminar este item?</p>
+    <form action="/eliminar" method="POST">
+        <input type="hidden" name="id" value="{{ item_id }}">
+        <button type="submit">Confirmar</button>
+        <a href="/cancelar">Cancelar</a>
+    </form>
+</body>
+</html>
