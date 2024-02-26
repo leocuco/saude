@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include 'head.html' %}
+{% include 'base/head.html' %}
 
 <body>
 
     <!-- ======= Header ======= -->
-    {%include 'navbar.html' %}
+    {%include 'base/navbar.html' %}
     <!-- End Header -->
 {% block mensagem %}
 <h1>Dentro do block</h1>
 {%  endblock %}
     <!-- ======= Sidebar ======= -->
-    {% include 'sidebar.html' %}
+    {% include 'base/sidebar.html' %}
     <!--====== End Sidebar ======== -->
     <main id="main" class="main">
 
@@ -21,7 +21,7 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item"> <a href="Base/dashboard.html">Home</a> </li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -642,7 +642,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    {% include 'footer.html' %}
+    {% include 'base/footer.html' %}
     
 </body>
 

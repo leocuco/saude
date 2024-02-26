@@ -1,16 +1,63 @@
-<!-- FILEPATH: /Users/admin/Dev/saude/apps/clinica/templates/Clinica/confirmar_eliminar.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Confirmar Eliminação</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            color: #666;
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-warning {
+            background-color: #ffc107;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+    </style>
 </head>
 <body>
-    <h1>Confirmar Eliminação</h1>
-    <p>Tem certeza que deseja eliminar este item?</p>
-    <form action="/eliminar" method="POST">
-        <input type="hidden" name="id" value="{{ item_id }}">
-        <button type="submit">Confirmar</button>
-        <a href="/cancelar">Cancelar</a>
-    </form>
+    <div class="container">
+        <h1>Confirmar Eliminação</h1>
+        <p>Tem certeza que deseja eliminar?</p>
+        <form action="/eliminar" method="POST">
+            {% csrf_token %}
+            <p>ID do Paciente: {{ confirmar_eliminar.id }}, {{ confirmar_eliminar }}</p>
+            <a href="{% url 'confirmar_eliminar' confirmar_eliminar.id %}" class="btn btn-light btn-danger">Confirmar</a>
+            <a href="{% url 'lista_pacientes' %}" class="btn  btn-warning">Cancelar</a>
+        </form>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

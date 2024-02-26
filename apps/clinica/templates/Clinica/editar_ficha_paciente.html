@@ -31,7 +31,6 @@
                                 <!-- No Labels Form -->
                                 <h1>Detalhes do Paciente</h1>
                                 <hr>
-                                <p>Nascimento: {{editar_ficha_paciente.data_emissao_documento}}</p> 
 
                                 <form class="row g-3 needs-validation" action="guardar_alteracoes/{{.id}}"
                                     method="POST"  novalidate>
@@ -57,18 +56,17 @@
 
                                     <div class="col-md-4 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Apelido" name="apelido" required value="{{editar_ficha_paciente.apelido}}">
+                                            placeholder="Apelido" name="apelido" required value="{{ editar_ficha_paciente.apelido }}">
                                             <label for="floatingInput">Apelido</label>
                                     </div>
 
                                     <div class="col-md-4 form-floating">
                                         <input type="date"
                                             class="form-control"
-                                            placeholder="YYYY-MM-DD"
-                                            name="data_nascimento" required value="{{editar_ficha_paciente.data_nascimento}}">
+                                            placeholder=""
+                                            name="data_nascimento" required value="{{ editar_ficha_paciente.data_nascimento|date:"Y-m-d" }}">
                                             <label for="floatingInput">Data de Nascimento</label>
                                     </div>
-
 
                                     <div class="col-md-4 form-floating">
                                         <input type="text" class="form-control"
@@ -114,6 +112,7 @@
                                             placeholder="Profissao" name="profissao" value="{{editar_ficha_paciente.profissao}}">
                                             <label for="floatingInput">Profissao</label>
                                     </div>
+
                                     <div class="col-md-4 form-floating">
                                         <select id="inputState" class="form-select" name="tipo_documento">
                                             <option selected>Documento...</option>
@@ -135,21 +134,24 @@
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="YYYY-MM-DD" name="data_emissao_documento" value="{{editar_ficha_paciente.data_emissao_documento}}">
+                                            placeholder="" name="data_emissao_documento" value="{{editar_ficha_paciente.data_emissao_documento|date:"Y-m-d"}}">
                                             <label for="floatingInput">Emissao</label>
                                     </div>
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="YYYY-MM-DD" name="data_validade_documento" value="{{editar_ficha_paciente.data_validade_documento}}">
+                                            placeholder="" name="data_validade_documento" value="{{editar_ficha_paciente.data_validade_documento|date:"Y-m-d"}}">
                                             <label for="floatingInput">Validade</label>
                                     </div>
 
+
                                     <div class="col-md-3 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Emissao" name="nacionalidade" required value="{{editar_ficha_paciente.nacionalidade}}">
+                                            placeholder="nacionalidade" name="nacionalidade" value="{{editar_ficha_paciente.nacionalidade}}">
                                             <label for="floatingInput">Nacionalidade</label>
                                     </div>
+
+
 
                                     <div class="col-md-3 form-floating">
                                         <select id="inputState" class="form-select" name="estado_civil">
@@ -164,13 +166,13 @@
                                     </div>
                                     <div class="col-md-6 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Emissao" name="nome_pai" value="{{editar_ficha_paciente.nome_pai}}">
+                                            placeholder="" name="nome_pai" value="{{editar_ficha_paciente.nome_pai}}">
                                             <label for="floatingInput">Nome do Pai</label>
                                     </div>
 
                                     <div class="col-md-6 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Emissao" name="nome_mae" value="{{editar_ficha_paciente.nome_mae}}">
+                                            placeholder="" name="nome_mae" value="{{editar_ficha_paciente.nome_mae}}">
                                             <label for="floatingInput">Nome da Mae</label>
                                     </div>
 

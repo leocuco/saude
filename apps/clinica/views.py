@@ -3,11 +3,13 @@ from django.template import loader
 from django.urls import reverse
 from .models import paciente
 from django.shortcuts import render
+import requests
+
 
 # Create your views here.
 
 def index(request):
-    template_name = 'dashboard.html'
+    template_name = 'base/dashboard.html'
     return render(request, template_name)
 
 def clinica(request):
@@ -22,6 +24,7 @@ def pacientes_lista(request):
     }
     return HttpResponse(template_name.render(context, request))
 
+
 def pacientes_ficha(request):
     paciente_ficha = paciente.objects.all()
     template_name = loader.get_template('clinica/ficha_paciente.html')
@@ -29,6 +32,8 @@ def pacientes_ficha(request):
         'paciente_ficha': paciente_ficha,
     }
     return HttpResponse(template_name.render(context, request))
+
+
 
 def adicionar_paciente(request):
     nome = request.POST['nome']
@@ -51,17 +56,23 @@ def adicionar_paciente(request):
     nome_pai = request.POST['nome_pai']
     nome_mae = request.POST['nome_mae']
     inactivo = request.POST.get('inactivo', False)  # Use get() with a default value
-    paciente.objects.create(nome=nome, apelido=apelido, data_nascimento=data_nascimento, sexo=sexo, local_nascimento=local_nascimento, numero_contribuinte=numero_contribuinte, morada=morada, telefone=telefone, email=email, profissao=profissao, tipo_documento=tipo_documento, numero_documento=numero_documento, data_emissao_documento=data_emissao_documento, data_validade_documento=data_validade_documento, nacionalidade=nacionalidade, estado_civil=estado_civil, nome_pai=nome_pai, nome_mae=nome_mae, observacoes=observacoes, inactivo=inactivo)
+    paciente.objects.create(nome=nome, apelido=apelido, data_nascimento=data_nascimento, sexo=sexo, local_nascimento=local_nascimento, 
+                            numero_contribuinte=numero_contribuinte, morada=morada, telefone=telefone, email=email, profissao=profissao, 
+                            tipo_documento=tipo_documento, numero_documento=numero_documento, data_emissao_documento=data_emissao_documento, 
+                            data_validade_documento=data_validade_documento, nacionalidade=nacionalidade, estado_civil=estado_civil, 
+                            nome_pai=nome_pai, nome_mae=nome_mae, observacoes=observacoes, inactivo=inactivo)
     return HttpResponseRedirect(reverse('lista_pacientes'))
 
 
 def editar_ficha_paciente(request, paciente_id):
+
     editar_ficha_paciente = paciente.objects.get(pk=paciente_id)
     template_name = loader.get_template('clinica/editar_ficha_paciente.html')
     context = {
-        'editar_ficha_paciente': editar_ficha_paciente,
+        'editar_ficha_paciente': editar_ficha_paciente, 
     }
     return HttpResponse(template_name.render(context, request))
+
 
 
 def guardar_alteracoes(request, paciente_id):   
@@ -85,18 +96,35 @@ def guardar_alteracoes(request, paciente_id):
     nome_pai = request.POST['nome_pai']
     nome_mae = request.POST['nome_mae']
     inactivo = request.POST.get('inactivo', False)  # Use get() with a default value
-    paciente.objects.filter(pk=paciente_id).update(nome=nome, apelido=apelido, data_nascimento=data_nascimento, sexo=sexo, local_nascimento=local_nascimento, numero_contribuinte=numero_contribuinte, morada=morada, telefone=telefone, email=email, profissao=profissao, tipo_documento=tipo_documento, numero_documento=numero_documento, data_emissao_documento=data_emissao_documento, data_validade_documento=data_validade_documento, nacionalidade=nacionalidade, estado_civil=estado_civil, nome_pai=nome_pai, nome_mae=nome_mae, observacoes=observacoes, inactivo=inactivo)
+    paciente.objects.filter(pk=paciente_id).update(nome=nome, apelido=apelido, data_nascimento=data_nascimento, 
+                                                   sexo=sexo, local_nascimento=local_nascimento, numero_contribuinte=numero_contribuinte, 
+                                                   morada=morada, telefone=telefone, email=email, profissao=profissao, tipo_documento=tipo_documento, 
+                                                   numero_documento=numero_documento, data_emissao_documento=data_emissao_documento, 
+                                                   data_validade_documento=data_validade_documento, nacionalidade=nacionalidade, 
+                                                   estado_civil=estado_civil, nome_pai=nome_pai, nome_mae=nome_mae, observacoes=observacoes, 
+                                                   inactivo=inactivo)
     return HttpResponseRedirect(reverse('lista_pacientes'))
 
+
+
+
 def eliminar_paciente(request, paciente_id):
+    confirmar_eliminar = paciente.objects.get(pk=paciente_id)
+    template_name = loader.get_template('clinica/confirmar_eliminar.html')
+    context = {
+        'confirmar_eliminar': confirmar_eliminar,
+    }
+    return HttpResponse(template_name.render(context, request))
+
+
+def confirmar_eliminar(request, paciente_id):
     paciente.objects.filter(pk=paciente_id).delete()
     return HttpResponseRedirect(reverse('lista_pacientes'))
 
 
-# def confirmar_eliminar(request, paciente_id):
-#     confirmar_eliminar = paciente.objects.get(pk=paciente_id)
-#     template_name = loader.get_template('clinica/confirmar_eliminar.html')
-#     context = {
-#         'confirmar_eliminar': confirmar_eliminar,
-#     }
-#     return HttpResponse(template_name.render(context, request))
+
+
+
+
+
+

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% include 'head.html' %}
+    {% include 'base/head.html' %}
 
     <body>
-        {% include 'navbar.html' %}
-        {% include 'sidebar.html' %}
+        {% include 'base/navbar.html' %}
+        {% include 'base/sidebar.html' %}
         <main id="main" class="main">
 
             <div class="pagetitle">
@@ -143,16 +143,17 @@
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="Validade" name="data_validade_documento">
-                                            <label for="floatingInput">Validade</label>
+                                            placeholder="Validade" name="data_validade_documento" pattern="\d{2}/\d{2}/\d{4}" title="Formato de data: dd/mm/yyyy" required>
+                                        <label for="floatingInput">Validade</label>
                                     </div>
 
                                     <div class="col-md-3 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Emissao" name="nacionalidade" required>
+                                            placeholder="" name="nacionalidade">
                                             <label for="floatingInput">Nacionalidade</label>
                                     </div>
 
+                                    
                                     <div class="col-md-3 form-floating">
                                         <select id="inputState"
                                             class="form-select" name="estado_civil">
@@ -203,6 +204,6 @@
 
     </body>
 
-    {% include 'footer.html' %}
+    {% include 'base/footer.html' %}
 
 </html>
