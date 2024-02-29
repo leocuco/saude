@@ -2,7 +2,7 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
-from .models import especialidade
+
 
 # Create your models here.
 
@@ -81,7 +81,7 @@ class medico(models.Model):
     morada = models.CharField(max_length=200, null=True)
     telefone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
-    especialidade = models.ForeignKey(especialidade, verbose_name=_("Especialidade"), on_delete=models.CASCADE)
+    especialidade = models.ForeignKey('especialidade', on_delete=models.CASCADE, null=True)
     observacoes = models.TextField(null=True)
     numero_ordem = models.CharField(max_length=200)
     data_validade_ordem = models.DateField('data de validade', null=True)
