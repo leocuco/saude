@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from .models import paciente
+from .models import paciente, medico
 from django.shortcuts import render
 
 # Create your views here.
@@ -91,3 +91,13 @@ def guardar_alteracoes(request, paciente_id):
 def eliminar_paciente(request, paciente_id):
     paciente.objects.filter(pk=paciente_id).delete()
     return HttpResponseRedirect(reverse('lista_pacientes'))
+
+# Medicos
+def lista_meidcos(request):
+    todos_medicos = medico.objects.all().values()
+    template_name = loader.get_template('clinica/lista_medicos.html')
+    context = {
+        'todos_medicos': todos_medicos,
+    }
+    return HttpResponse(template_name.render(context, request))
+    

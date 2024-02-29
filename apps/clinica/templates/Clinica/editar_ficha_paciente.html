@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% include 'head.html' %}
+    {% include 'main/head.html' %}
 
     <body>
-        {% include 'navbar.html' %}
-        {% include 'sidebar.html' %}
+        {% include 'main/navbar.html' %}
+        {% include 'main/sidebar.html' %}
         <main id="main" class="main">
 
             <div class="pagetitle">
@@ -31,7 +31,7 @@
                                 <!-- No Labels Form -->
                                 <h1>Detalhes do Paciente</h1>
                                 <hr>
-                                <p>Nascimento: {{editar_ficha_paciente.data_emissao_documento}}</p> 
+                                <p>Nascimento: {{editar_ficha_paciente.data_emissao_documento | date:"Y-m-d"}}</p> 
 
                                 <form class="row g-3 needs-validation" action="guardar_alteracoes/{{.id}}"
                                     method="POST"  novalidate>
@@ -64,8 +64,9 @@
                                     <div class="col-md-4 form-floating">
                                         <input type="date"
                                             class="form-control"
-                                            placeholder="YYYY-MM-DD"
-                                            name="data_nascimento" required value="{{editar_ficha_paciente.data_nascimento}}">
+                                            placeholder=""
+                                            <input type="text" class="form-control"
+                                                placeholder="" name="data_nascimento" required value="{{editar_ficha_paciente.data_nascimento | date:"Y-m-d"}}">
                                             <label for="floatingInput">Data de Nascimento</label>
                                     </div>
 
@@ -135,13 +136,13 @@
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="YYYY-MM-DD" name="data_emissao_documento" value="{{editar_ficha_paciente.data_emissao_documento}}">
+                                            placeholder="" value="{{editar_ficha_paciente.data_emissao_documento | date:"Y-m-d"}}">
                                             <label for="floatingInput">Emissao</label>
                                     </div>
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="YYYY-MM-DD" name="data_validade_documento" value="{{editar_ficha_paciente.data_validade_documento}}">
+                                            placeholder="YYYY-MM-DD" name="data_validade_documento" value="{{editar_ficha_paciente.data_validade_documento | date:"Y-m-d"}}">
                                             <label for="floatingInput">Validade</label>
                                     </div>
 
@@ -198,6 +199,6 @@
 
     </body>
 
-    {% include 'footer.html' %}
+    {% include 'main/footer.html' %}
 
 </html>

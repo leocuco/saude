@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include 'main/head.html' %}
+
+  <body>
+    {% include 'main/navbar.html' %} 
+    {% include 'main/sidebar.html' %}
+  </body>
+  {% block content %}
+
+  <main id="mail" class="main">
+    <div class="pagetitle">
+      <h1>Medicos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item">Clinica</li>
+          <li class="breadcrumb-item active">Medico</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+  </main>
+
+  {% endblock %} {% include 'main/footer.html' %}
+</html>
