@@ -108,7 +108,7 @@ LANGUAGE_CODE = 'pt-mz'
 
 TIME_ZONE = 'Africa/Maputo'
 
-DATA_FORMAT = 'YYYY-MM-DD'
+DATA_FORMAT = 'Y-m-d'
 
 USE_I18N = True
 

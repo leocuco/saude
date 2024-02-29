@@ -73,7 +73,7 @@
 
                                     <div class="col-md-4 form-floating">
                                         <input type="text" class="form-control"
-                                            placeholder="Apelido" name="local_nascimento" required value="{{editar_ficha_paciente.local_nascimento}}">
+                                            placeholder="" name="local_nascimento" required value="{{editar_ficha_paciente.local_nascimento}}">
                                             <label for="floatingInput">Local de Nascimento</label>
                                     </div>
 
@@ -117,13 +117,13 @@
                                     </div>
                                     <div class="col-md-4 form-floating">
                                         <select id="inputState" class="form-select" name="tipo_documento">
-                                            <option selected>Documento...</option>
-                                            <option {% if editar_ficha_paciente.documento == 'BI' %}selected{% endif %}>BI</option>
-                                            <option {% if editar_ficha_paciente.documento == 'Passaporte' %}selected{% endif %}>Passaporte</option>
-                                            <option {% if editar_ficha_paciente.documento == 'Carta de conducao' %}selected{% endif %}>Carta de conducao</option>
-                                            <option {% if editar_ficha_paciente.documento == 'Cartao de eleitor' %}selected{% endif %}>Cartao de eleitor</option>
-                                            <option {% if editar_ficha_paciente.documento == 'DIRE' %}selected{% endif %}>DIRE</option>
-                                            <option {% if editar_ficha_paciente.documento == 'Outros' %}selected{% endif %}>Outros</option>
+                                            <option selected>Documento</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'BI' %}selected{% endif %}>BI</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'Passaporte' %}selected{% endif %}>Passaporte</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'Carta de conducao' %}selected{% endif %}>Carta de conducao</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'Cartao de eleitor' %}selected{% endif %}>Cartao de eleitor</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'DIRE' %}selected{% endif %}>DIRE</option>
+                                            <option {% if editar_ficha_paciente.tipo_documento == 'Outros' %}selected{% endif %}>Outros</option>
                                         </select>
                                         <label for="floatingInput">Documento</label>
 
@@ -136,7 +136,7 @@
 
                                     <div class="col-md-3 form-floating">
                                         <input type="date" class="form-control"
-                                            placeholder="" value="{{editar_ficha_paciente.data_emissao_documento | date:"Y-m-d"}}">
+                                            placeholder="" name ="data_emissao_documento" value="{{editar_ficha_paciente.data_emissao_documento | date:"Y-m-d"}}">
                                             <label for="floatingInput">Emissao</label>
                                     </div>
 
@@ -163,6 +163,7 @@
                                         </select>
                                         <label for="floatingInput">Estado Civil</label>
                                     </div>
+
                                     <div class="col-md-6 form-floating">
                                         <input type="text" class="form-control"
                                             placeholder="Emissao" name="nome_pai" value="{{editar_ficha_paciente.nome_pai}}">
