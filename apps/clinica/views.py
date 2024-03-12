@@ -18,7 +18,7 @@ def clinica(request):
 # Pacientes
 def pacientes_lista(request):
     todos_pacientes = paciente.objects.all().values()
-    template_name = loader.get_template('clinica/lista_pacientes.html')
+    template_name = loader.get_template('clinica/paciente/lista_pacientes.html')
     context = {
         'todos_pacientes': todos_pacientes,
     }
@@ -27,7 +27,7 @@ def pacientes_lista(request):
 
 def pacientes_ficha(request):
     paciente_ficha = paciente.objects.all()
-    template_name = loader.get_template('clinica/ficha_paciente.html')
+    template_name = loader.get_template('clinica/paciente/ficha_paciente.html')
     context = {
         'paciente_ficha': paciente_ficha,
     }
@@ -67,7 +67,7 @@ def adicionar_paciente(request):
 def editar_ficha_paciente(request, paciente_id):
 
     editar_ficha_paciente = paciente.objects.get(pk=paciente_id)
-    template_name = loader.get_template('clinica/editar_ficha_paciente.html')
+    template_name = loader.get_template('clinica/paciente/editar_ficha_paciente.html')
     context = {
         'editar_ficha_paciente': editar_ficha_paciente, 
     }
@@ -114,7 +114,7 @@ def guardar_alteracoes(request, paciente_id):
 
 def eliminar_paciente(request, paciente_id):
     confirmar_eliminar = paciente.objects.get(pk=paciente_id)
-    template_name = loader.get_template('clinica/confirmar_eliminar.html')
+    template_name = loader.get_template('clinica/paciente/confirmar_eliminar.html')
     context = {
         'confirmar_eliminar': confirmar_eliminar,
     }
