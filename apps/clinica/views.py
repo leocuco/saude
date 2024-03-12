@@ -71,11 +71,15 @@ def editar_ficha_paciente(request, paciente_id):
     context = {
         'editar_ficha_paciente': editar_ficha_paciente, 
     }
+
+    print(editar_ficha_paciente.tipo_documento)
+    
     return HttpResponse(template_name.render(context, request))
 
 
 
 def guardar_alteracoes(request, paciente_id):   
+
     nome = request.POST['nome']
     apelido = request.POST['apelido']
     data_nascimento = request.POST['data_nascimento']

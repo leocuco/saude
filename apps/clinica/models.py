@@ -60,6 +60,9 @@ class paciente(models.Model):
     def idade(self):    
         return datetime.date.today().year - self.data_nascimento.year
     
+class medico(models.Model):
+    pass
+    
    
 
 
