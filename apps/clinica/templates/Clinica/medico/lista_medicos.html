@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     {% block titulo %}
-    <title>Paciente </title>
+    <title>Medico </title>
     {% endblock %}
     {% include 'base/head.html' %}
 
@@ -16,10 +16,10 @@
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Clinica</a></li>
-                        <li class="breadcrumb-item">Pacientes</li>
+                        <li class="breadcrumb-item">Medicos</li>
                     </ol>
                     <a href="{% url 'ficha_paciente' %}">
-                        <button type="button"  class="btn btn-outline-success" onclick="index.html"">Novo Paciente</button>
+                        <button type="button"  class="btn btn-outline-success" onclick="index.html"">Novo Medico</button>
                     </a>
                 </nav>
             </div><!-- End Page Title -->
@@ -37,22 +37,17 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th data-type="date"
-                                                data-format="YYYY-MM-DD">
-                                                Nascimento</th>
-                                            <th>Morada</th>
                                             <!-- <th>Editar</th>
                                             <th>Apagar</th> -->
                                         </tr>
                                     </thead>
-                                   <!-- <h3>{{todos_pacientes}}</h3> -->
-                                    {% for x in todos_pacientes %}
+                                    {% comment %} <h3>{{todos_medicos}}</h3>  {% endcomment %}
+                                    {% for x in todos_medicos %}
                                     <tr>
-                                        <td><a href="editar_ficha_paciente/{{x.id}}">{{ x.id }}</a></td>
-                                        <td>{{ x.nome }} {{ x.apelido }}</td>
-                                        <td>{{ x.data_nascimento|date:"d/m/Y" }}</td>
-                                        <td>{{ x.morada }}</td>
-                                        <td><a href="editar_ficha_paciente/{{x.id}}"><i class="bi bi-pencil"></i></a>|<a href="eliminar_paciente/{{x.id}}"><i class="bi bi-trash3 text-danger"></i></a></i></td>
+                                        {% comment %} <td><a href="editar_ficha_paciente/{{x.id}}">{{ x.id }}</a></td> {% endcomment %}
+                                        <td>{{ x.id }}</td>
+                                        <td>{{ x.nome }}</td>
+                                        <td><a href="editar_ficha_paciente/{{x.id}}"><i class="bi bi-pencil"></i></a>|<a href="eliminar_paciente/{{x.id}}"><i class="bi bi-trash3 text-danger"></i></a></i></td> 
                                     </tr>
                                     {% endfor %}
 

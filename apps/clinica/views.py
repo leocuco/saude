@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from .models import paciente
+from .models import paciente,medico, especialidade, medico_especialidade
 from django.shortcuts import render
 import requests
 
@@ -123,11 +123,16 @@ def eliminar_paciente(request, paciente_id):
 
 def confirmar_eliminar(request, paciente_id):
     paciente.objects.filter(pk=paciente_id).delete()
-    return HttpResponseRedirect(reverse('lista_pacientes'))
+    
 
-
-
-
+def lista_medicos(request):
+    todos_medicos = medico.objects.all().values()
+    template_name = loader.get_template('clinica/medico/lista_medicos.html')
+    context = {
+        'todos_medicos': todos_medicos,
+    }
+    return HttpResponse(template_name.render(context, request))
+  
 
 
 
