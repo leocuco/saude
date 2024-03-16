@@ -106,6 +106,46 @@ class medico_especialidade(models.Model):
     inactivo = models.BooleanField(default=False)
 
 
+class consulta(models.Model):
+    paciente = models.ForeignKey(paciente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(medico, on_delete=models.CASCADE)
+    data_consulta = models.DateTimeField('data da consulta', default=timezone.now)
+    observacoes = models.TextField(null=True)
+    data_criacao = models.DateTimeField('data de criacao consulta', default=timezone.now)
+    utilizador_criacao = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='utilizador_criacao_consulta')
+    ultima_alteracao = models.DateTimeField('ultima alteracao consulta', default=timezone.now)
+    inactivo = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.paciente.nome + ' ' + self.medico.nome
+    
+class exame(models.Model):
+    paciente = models.ForeignKey(paciente, on_delete=models.CASCADE)
+    data_exame = models.DateTimeField('data do exame', default=timezone.now)
+    observacoes = models.TextField(null=True)
+    data_criacao = models.DateTimeField('data de criacao exame', default=timezone.now)
+    utilizador_criacao = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='utilizador_criacao_exame')
+    ultima_alteracao = models.DateTimeField('ultima alteracao exame', default=timezone.now)
+    inactivo = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.paciente.nome + ' ' + self.data_exame.strftime('%d-%m-%Y')
+    
+
+class receita(models.Model):
+    paciente = models.ForeignKey(paciente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(medico, on_delete=models.CASCADE)
+    data_receita = models.DateTimeField('data da receita', default=timezone.now)
+    observacoes = models.TextField(null=True)
+    data_criacao = models.DateTimeField('data de criacao receita', default=timezone.now)
+    utilizador_criacao = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='utilizador_criacao_receita')
+    ultima_alteracao = models.DateTimeField('ultima alteracao receita', default=timezone.now)
+    inactivo = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.paciente.nome + ' ' + self.medico.nome + ' ' + self.data_receita.strftime('%d-%m-%Y')
+
+
 
 
 
